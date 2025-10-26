@@ -17,7 +17,7 @@ function Categories() {
 
 function CategoryCards({ categories }) {
   return (
-    <div className="flex flex-row gap-[25px] overflow-x-scroll mt-[15px] items-start">
+    <div className="flex flex-wrap gap-[25px] mt-[15px] items-start">
       {categories.map(item => (
         <Link 
           key={item.name} 

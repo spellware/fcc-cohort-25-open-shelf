@@ -13,7 +13,7 @@ export default function Navbar({ profile, onHeightChange }) {
   const revalidator = useRevalidator()
   const { unreadCount } = useUnreadCount()
   const linkClassNames = ({ isActive }) =>
-    isActive ? 'border-b-1 border-b-black px-3 py-1' : 'text-stroke-strong'
+    isActive ? 'border-b-1 border-b-black' : 'text-stroke-strong'
 
   const handleLogout = async () => {
     await logout()

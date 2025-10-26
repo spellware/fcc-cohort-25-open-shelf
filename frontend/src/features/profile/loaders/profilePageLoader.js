@@ -1,16 +1,15 @@
+import { redirect } from 'react-router'
 import { getProfile } from '../api/getProfile'
 
 export async function profilePageLoader() {
-  const response = await getProfile()
-  
-  if (response.status === 403) {
-    // User is not authenticated, redirect to login
-    throw new Response('Unauthorized', { status: 401 })
+  try {
+    const response = await getProfile()
+    return { profile: response.data }
+  } catch (error) {
+    if (error.response?.status === 403) {
+      console.warn('User unauthorized - redirecting to login.')
+      throw redirect('/login')
+    }
+    throw new Response('Failed to load profile', { status: error.response?.status || 500 })
   }
-  
-  if (response.status !== 200) {
-    throw new Response('Failed to load profile', { status: response.status })
-  }
-  
-  return { profile: response.data }
 }
