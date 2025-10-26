@@ -60,7 +60,7 @@ function DetailPage() {
   }
 
   const { navHeight } = useOutletContext()
-  const profileAvatar = `https://eu.ui-avatars.com/api/?name=${profile.name}&size=48&background=6565C9&color=fff`
+  const profileAvatar = `https://eu.ui-avatars.com/api/?name=${item.owner.name}&size=48&background=6565C9&color=fff`
 
   return (
     <div className="min-h-[100dvh]" style={{ paddingTop: navHeight }}>
@@ -138,7 +138,7 @@ function DetailPage() {
                   className="rounded-full"
                   width="50"
                 />
-                <span className="font-sans-base font-bold">{profile.name}</span>
+                <span className="font-sans-base font-bold">{item.owner.name}</span>
               </div>
 
               <p className="text-stroke-strong">
